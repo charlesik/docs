@@ -1,0 +1,178 @@
+---
+title: "Transfer Domain"
+description: "Send a transfer command to the registrar"
+icon: 'domain'
+---
+
+
+The transfer action is used to send a transfer command to the registrar.
+
+## Endpoint
+**POST** - `/order/domains/transfer`
+
+## Request Parameters
+
+| Name         | Type    | Required? | Description                                                   |
+|--------------|---------|-----------|---------------------------------------------------------------|
+| domain       | text    | Yes       | Domain name                                                   |
+| eppcode      | text    | Yes       | EPP code of the domain to be transferred                      |
+| regperiod    | numeric | Yes       | Registration period                                           |
+| addons       | array   | No        | Enables DNS management, email forwarding, and/or ID protection for this domain |
+| nameservers  | array   | Yes       | Nameserver information. `ns1` and `ns2` are required. `ns3`, `ns4`, `ns5` are optional |
+| contacts     | array   | Yes       | Contact information for registrant, tech, billing, admin      |
+
+### Nameservers Structure
+
+- **nameserver1**: text
+- **nameserver2**: text
+- **nameserver3**: text
+- **nameserver4**: text
+- **nameserver5**: text
+
+### Contacts Structure
+
+#### Registrant
+
+- **firstname**: text
+- **lastname**: text
+- **fullname**: text
+- **companyname**: text
+- **email**: text
+- **address1**: text
+- **address2**: text
+- **city**: text
+- **state**: text
+- **zipcode**: text
+- **country**: text
+- **phonenumber**: text
+
+#### Tech
+
+- **firstname**: text
+- **lastname**: text
+- **fullname**: text
+- **companyname**: text
+- **email**: text
+- **address1**: text
+- **address2**: text
+- **city**: text
+- **state**: text
+- **zipcode**: text
+- **country**: text
+- **phonenumber**: text
+
+#### Billing
+
+- **firstname**: text
+- **lastname**: text
+- **fullname**: text
+- **companyname**: text
+- **email**: text
+- **address1**: text
+- **address2**: text
+- **city**: text
+- **state**: text
+- **zipcode**: text
+- **country**: text
+- **phonenumber**: text
+
+#### Admin
+
+- **firstname**: text
+- **lastname**: text
+- **fullname**: text
+- **companyname**: text
+- **email**: text
+- **address1**: text
+- **address2**: text
+- **city**: text
+- **state**: text
+- **zipcode**: text
+- **country**: text
+- **phonenumber**: text
+
+## Sample Transfer Domain Request
+
+```php
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/order/domains/transfer";
+$params = [
+    "domain" => "example.com",
+    "eppcode" => "123GJE4",
+    "regperiod" => "1",
+    "nameservers" => [
+        "nsa.whogohost.com",
+        "nsb.whogohost.com",
+    ],
+    "contacts" => [
+        "registrant" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ],
+        "tech" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.87546898"
+        ],
+        "billing" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ],
+        "admin" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ],
+    ]
+];
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:" . gmdate("y-m-d H")))
+];
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+$response = curl_exec($curl);
+curl_close($curl);

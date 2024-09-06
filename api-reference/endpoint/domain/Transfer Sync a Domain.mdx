@@ -1,0 +1,44 @@
+---
+title: "Transfer Sync the Details of a Domain"
+openapi: "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php"
+icon: "api"
+---
+
+This command is called for every domain in the Pending Transfer status each time your domain sync cron runs.
+
+## API Call
+
+**POST** - `/domains/{domain}/transfersync`
+
+### Request Parameters
+
+| Name   | Type | Required? | Description  |
+|--------|------|-----------|--------------|
+| domain | text | Yes       | Domain name  |
+
+### Sample Reques
+
+```php
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/domains/example.com/transfersync";
+$params = [
+    "domain"    => "example.com",
+];
+
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:".gmdate("y-m-d H"))),
+];
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);
+

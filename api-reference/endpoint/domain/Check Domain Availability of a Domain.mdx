@@ -1,0 +1,53 @@
+---
+title: 'Check Domain Availability'
+openapi: 'POST https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php'
+description: "This endpoint creates a new domain."
+---
+This command is used to check the availability of a domain.
+
+### Endpoint
+
+**POST** - `/domains/lookup`
+
+### Request Parameters
+
+| Name                | Type    | Required? | Description                                   |
+|---------------------|---------|-----------|-----------------------------------------------|
+| `domain`            | text    | Yes       | The SLD of the domain to be looked up         |
+| `punnyCodeSearchTerm` | text  | Yes       | The puny code encoded search term for an IDN domain |
+| `tldsToInclude`     | text    | Yes       | All TLDs to be included when the search is performed |
+| `isIdnDomain`       | Boolean | No        | If IDN Domains are enabled                    |
+| `premiumEnabled`    | Boolean | No        | Premium domain enabled                        |
+
+### Sample Request
+
+```php
+$endpoint   = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action     = "/domains/lookup";
+$params     = [
+    "searchTerm" => "example",
+    "punnyCodeSearchTerm" => "example",
+    "tldsToInclude" => [".com", ".com.ng"],
+    "isIdnDomain" => true,
+    "premiumEnabled" => true,
+];
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:" . gmdate("y-m-d H")))
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+
+
+
+

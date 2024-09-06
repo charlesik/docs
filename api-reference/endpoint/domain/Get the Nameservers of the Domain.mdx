@@ -1,0 +1,42 @@
+---
+title: "Get the Nameservers of a Domain"
+openapi: "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php"
+---
+
+This command is used to get the nameservers of a domain.
+
+## API Call
+
+**GET** - `/domains/{domain}/nameservers`
+
+### Request Parameters
+
+| Name   | Type | Required? | Description  |
+|--------|------|-----------|--------------|
+| domain | text | Yes       | Domain name  |
+
+### Sample Request
+
+```php
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/domains/example.com/nameservers";
+$params = [
+    "domain"    => "example.com",
+];
+
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:".gmdate("y-m-d H"))),
+];
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);  // Note: This should be changed to curl_setopt($curl, CURLOPT_HTTPGET, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));  // Note: This line is typically unnecessary for a GET request
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);

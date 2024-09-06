@@ -1,51 +1,55 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Go54 API Documentation",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/full_logo_white.svg",
+    "light": "/logo/full_logo.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#F0A21C",
+    "light": "#F4C166",
+    "dark": "#F0A21C",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#F0A21C",
+      "to": "#F4C166"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "https://support.go54.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://dashboard.go54.com"
   },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "SDK & Libraries",
+      "url": "sdk-libraries"
     }
   ],
   "anchors": [
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://go54.com/docs"
     },
     {
       "name": "Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://community.go54.com/"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://blog.go54.com"
     }
   ],
   "navigation": [
@@ -53,39 +57,55 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "product",
+        "sdk-libraries"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "API Reference",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "api-reference/introduction",
+        "api-reference/product"
+      ]
+    }, 
+    {
+      "group": "Domains",
+      "pages": [
+        "api-reference/general/domain/api-structure",
+        "api-reference/general/domain/error-code",
+        "api-reference/general/domain/authentication",
+        "api-reference/endpoint/domain/Check Domain Availability of a Domain",
+        "api-reference/endpoint/domain/Register Domain",
+        "api-reference/endpoint/domain/Transfer Domain",
+        "api-reference/endpoint/domain/Renew Domain",
+        "api-reference/endpoint/domain/Get EPP Code",
+        "api-reference/endpoint/domain/Get Contact Details",
+      "api-reference/endpoint/domain/Domain Reseller API",
+      "api-reference/endpoint/domain/Transfer Sync a Domain",
+        "api-reference/endpoint/domain/Sync the Details of a Domain",
+         "api-reference/endpoint/domain/Get the Registrar Lock of a Domain",
+         "api-reference/endpoint/domain/Get the Nameservers of the Domain",
+         "api-reference/endpoint/domain/Update Contact Details of a Domain",
+         "api-reference/endpoint/domain/Update the Nameservers of a Domain",
+         "api-reference/endpoint/domain/Update the Registrar Lock of a Domain"
+
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Communication",
       "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/general/communication/get-started",
+        "api-reference/general/communication/sms",
+        "api-reference/general/communication/voice",
+        "api-reference/general/communication/whatsapp",
+        "api-reference/general/communication/email",
+        "api-reference/general/communication/verification"
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/go54hq",
+    "github": "https://github.com/go54hq",
+    "linkedin": "https://www.linkedin.com/company/go54hq"
   }
 }

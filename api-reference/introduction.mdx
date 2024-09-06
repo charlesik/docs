@@ -1,33 +1,57 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "An intro to GO54 API reference."
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+GO54 provides a RESTFUL API based on simple HTTP POST/GET requests. Our API suite includes the following:
 
-## Welcome
+## Domains API
+With our Go54's Domain API, you can:
+- Register Domains: Easily register new domain names.
+- Renew Domains: Automate domain renewal to ensure your online presence is always active.
+- DNS Management: Configure DNS records for your domains effortlessly.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Communications API
+With our Sendchamp by Go54's communication API, you can:
+- Send Message & Receive Messages From Customers/Users Via different messaging channels
+- Send OTP & Verify Your Customer Phone Number/ Email Address Via SMS or Email or Voice or Whatsapp
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
+
+<Tabs>
+  <Tab title="SMS">
+    - Send SMS Messages: Send text messages to your users.
+    - Receive SMS Messages: Handle incoming SMS messages and automate responses.
+    - Manage SMS Templates: Create and manage SMS templates for consistent messaging.
+  </Tab>
+  <Tab title="Voice">
+    - Make Calls: Initiate voice calls programmatically.
+    - Receive Calls: Handle incoming voice calls in your application.
+    - Manage Call Recordings: Access and control call recordings.
+  </Tab>
+  <Tab title="WhatsApp">
+    - Send WhatsApp Messages: Send messages to your users via WhatsApp.
+    - Receive WhatsApp Messages: Receive and process incoming WhatsApp messages.
+    - Integrate WhatsApp Features: Incorporate WhatsApp functionality into your applications.
+  </Tab>
+  <Tab title="Email">
+    - Send Emails: Send email messages. .
+    - Receive Emails: Access and process incoming email messages.
+  </Tab>
+  <Tab title="Verification">
+    - Send OTP:
+    - Confirm OTP:
+  </Tab>
+</Tabs>
+
+
+> You can integrate Go54's API into your software applications and custom workflows to empower your customers
+
+
+<Card title="Developer Community" icon="link" href="https://community.sendchamp.com/">
+  Join our Slack developer community here for questions you might have and useful resources.
 </Card>
 
-## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+<Card title="Postman Collection" icon="link" href="#">
+  For quicker test, you can import our postman collection here and test available APIs on Postman
+</Card>

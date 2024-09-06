@@ -1,0 +1,43 @@
+---
+title: "Update the Registrar Lock of a Domain"
+openapi: "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php"
+---
+This command is used to update the lock state of a domain under your account.
+
+## API Call
+
+**POST** - `/domains/{domain}/lock`
+
+### Request Parameters
+
+| **Name**     | **Type** | **Required?** | **Description**     |
+|--------------|----------|---------------|---------------------|
+| `domain`     | `text`   | Yes           | Domain name         |
+| `lockstatus` | `text`   | Yes           | Lock status (`true` to lock, `false` to unlock) |
+
+### Sample Request
+
+```php
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/domains/example.com/lock";
+$params = [
+    "domain"     => "example.com",
+    "lockstatus" => "true",  
+];
+
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:".gmdate("y-m-d H")))
+];
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);

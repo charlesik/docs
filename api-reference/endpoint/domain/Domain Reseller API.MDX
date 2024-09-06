@@ -1,0 +1,61 @@
+---
+title: "Domains Reseller API"
+description: "Interact with our system using the Domains Reseller API"
+icon: 'api'
+---
+
+The Domains Reseller API allows you to connect and interact with our system using your own system. Using the API, you are able to perform actions such as:
+
+- Register a domain under your account.
+- Transfer a domain from another company to your account.
+- Renew a domain under your account.
+- Release a domain that has a registrar lock for a domain registered under your account.
+- Modify Contact Details of a domain registered under your account.
+- Get the EPP Code of a domain registered under your account.
+- Get/Save DNS Records of a domain under your account.
+- Get, Modify, or delete the Nameservers of a domain under your account.
+- Enable or disable the registrar lock of a domain.
+- Get/Save Email Forwarding.
+- ID Protection.
+- Domain Cron Synchronization.
+
+In requests, Domains Reseller accepts query parameters and the API response is sent in JSON data format.
+
+## Endpoint
+
+**URL**: `https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php`
+
+## Authorization
+
+- **Username**: This is the email address of your client account with us.
+- **Token**: Token is an API Key transformed into SHA256 hash using your email address and the current time encoded with base64.
+
+```php
+base64_encode(hash_hmac("sha256", "<api-key>", "<email>:<gmdate('y-m-d H')>"))
+Sample Domain Reseller API Request
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/order/domains/renew";
+$params = [
+    "domain" => "example.com",
+    "regperiod" => "3",
+    "addons" => [
+        "dnsmanagement" => 0,
+        "emailforwarding" => 1,
+        "idprotection" => 1,
+    ]
+];
+$headers = [
+    "username: email@example.com",
+    "token: " . base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:" . gmdate("y-m-d H")))
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);

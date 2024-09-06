@@ -1,0 +1,152 @@
+---
+title: "Update the Contact Information of a Domain"
+openapi: "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php"
+---
+This command is used to update the contact information of a domain under your account.
+
+## API Call
+
+**POST** - `/domains/{domain}/contact`
+
+### Request Parameters
+
+| **Name**      | **Type** | **Required?** | **Description**                      |
+|---------------|----------|---------------|--------------------------------------|
+| `domain`      | `text`   | Yes           | Domain name                          |
+| `contacts`    | `array`  | Yes           | Contact Details to be added or updated |
+| `registrant`  | `array`  | Yes           | Registrant Contact Information       |
+| └ `firstname` | `text`   | Yes           | Registrant's first name              |
+| └ `lastname`  | `text`   | Yes           | Registrant's last name               |
+| └ `fullname`  | `text`   | Yes           | Registrant's full name               |
+| └ `companyname` | `text` | No            | Registrant's company name            |
+| └ `email`    | `text`   | Yes           | Registrant's email address           |
+| └ `address1` | `text`   | Yes           | Registrant's address (line 1)        |
+| └ `address2` | `text`   | No            | Registrant's address (line 2)        |
+| └ `city`     | `text`   | Yes           | Registrant's city                    |
+| └ `state`    | `text`   | Yes           | Registrant's state                   |
+| └ `zipcode`  | `text`   | Yes           | Registrant's postal/ZIP code         |
+| └ `country`  | `text`   | Yes           | Registrant's country                 |
+| └ `phonenumber` | `text` | Yes           | Registrant's phone number            |
+| `tech`       | `array`  | Yes           | Technical Contact Information        |
+| └ `firstname` | `text`  | Yes           | Technical contact's first name       |
+| └ `lastname`  | `text`  | Yes           | Technical contact's last name        |
+| └ `fullname`  | `text`  | Yes           | Technical contact's full name        |
+| └ `companyname` | `text` | No           | Technical contact's company name     |
+| └ `email`    | `text`   | Yes           | Technical contact's email address    |
+| └ `address1` | `text`   | Yes           | Technical contact's address (line 1) |
+| └ `address2` | `text`   | No            | Technical contact's address (line 2) |
+| └ `city`     | `text`   | Yes           | Technical contact's city             |
+| └ `state`    | `text`   | Yes           | Technical contact's state            |
+| └ `zipcode`  | `text`   | Yes           | Technical contact's postal/ZIP code  |
+| └ `country`  | `text`   | Yes           | Technical contact's country          |
+| └ `phonenumber` | `text` | Yes          | Technical contact's phone number     |
+| `billing`    | `array`  | Yes           | Billing Contact Information          |
+| └ `firstname` | `text`  | Yes           | Billing contact's first name         |
+| └ `lastname`  | `text`  | Yes           | Billing contact's last name          |
+| └ `fullname`  | `text`  | Yes           | Billing contact's full name          |
+| └ `companyname` | `text` | No           | Billing contact's company name       |
+| └ `email`    | `text`   | Yes           | Billing contact's email address      |
+| └ `address1` | `text`   | Yes           | Billing contact's address (line 1)   |
+| └ `address2` | `text`   | No            | Billing contact's address (line 2)   |
+| └ `city`     | `text`   | Yes           | Billing contact's city               |
+| └ `state`    | `text`   | Yes           | Billing contact's state              |
+| └ `zipcode`  | `text`   | Yes           | Billing contact's postal/ZIP code    |
+| └ `country`  | `text`   | Yes           | Billing contact's country            |
+| └ `phonenumber` | `text` | Yes          | Billing contact's phone number       |
+| `admin`      | `array`  | Yes           | Administrative Contact Information   |
+| └ `firstname` | `text`  | Yes           | Admin contact's first name           |
+| └ `lastname`  | `text`  | Yes           | Admin contact's last name            |
+| └ `fullname`  | `text`  | Yes           | Admin contact's full name            |
+| └ `companyname` | `text` | No           | Admin contact's company name         |
+| └ `email`    | `text`   | Yes           | Admin contact's email address        |
+| └ `address1` | `text`   | Yes           | Admin contact's address (line 1)     |
+| └ `address2` | `text`   | No            | Admin contact's address (line 2)     |
+| └ `city`     | `text`   | Yes           | Admin contact's city                 |
+| └ `state`    | `text`   | Yes           | Admin contact's state                |
+| └ `zipcode`  | `text`   | Yes           | Admin contact's postal/ZIP code      |
+| └ `country`  | `text`   | Yes           | Admin contact's country              |
+| └ `phonenumber` | `text` | Yes          | Admin contact's phone number         |
+
+### Sample Request
+
+```php
+$endpoint ="https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/domains/example.com/contact";
+$params = [
+    "domain"    => "example.com",
+    "contacts"  => [
+        "registrant" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ],
+        "tech" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.87546898"
+        ],
+        "billing" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ],
+        "admin" => [
+            "firstname" => "example",
+            "lastname" => "testing",
+            "fullname" => "example testing",
+            "companyname" => "textmachine",
+            "email" => "exam@gmail.com",
+            "address1" => "4 office",
+            "address2" => "",
+            "city" => "Lag",
+            "state" => "Lagos",
+            "zipcode" => "110001",
+            "country" => "Nigeria",
+            "phonenumber" => "+234.812345678"
+        ]
+    ]
+];
+
+$headers = [
+    "username: email@example.com",
+    "token: ". base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:".gmdate("y-m-d H")))
+];
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);

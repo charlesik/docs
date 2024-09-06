@@ -1,0 +1,49 @@
+---
+title: "Update the Nameservers of a Domain"
+openapi: "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php"
+---
+This command is used to update the nameservers of a domain.
+
+## API Call
+
+**POST** - `/domains/{domain}/nameservers`
+
+### Request Parameters
+
+| **Name**      | **Type** | **Required?** | **Description**                                                           |
+|---------------|----------|---------------|---------------------------------------------------------------------------|
+| `domain`      | `text`   | Yes           | Domain name                                                               |
+| `nameservers` | `array`  | Yes           | An array of nameserver values. `nameserver1` and `nameserver2` are required. `nameserver3`, `nameserver4`, and `nameserver5` are optional. |
+
+### Sample Request
+
+```php
+$endpoint = "https://www.whogohost.com/host/modules/addons/DomainsReseller/api/index.php";
+$action = "/domains/example.com/nameservers";
+$params = [
+    "domain"    => "example.com",
+    "nameservers" => [
+        "nsa.whogohost.com", // nameserver1
+        "nsb.whogohost.com", // nameserver2
+        "nsc.whogohost.com", // nameserver3 (optional)
+        "nsd.whogohost.com", // nameserver4 (optional)
+        "nse.whogohost.com", // nameserver5 (optional)
+    ],
+ ];
+
+$headers = [
+    "username: email@example.com",
+    "token: ". base64_encode(hash_hmac("sha256", "1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "email@example.com:".gmdate("y-m-d H")))
+];
+
+$curl = curl_init();
+
+curl_setopt($curl, CURLOPT_URL, "{$endpoint}{$action}");
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
+$response = curl_exec($curl);
+curl_close($curl);
