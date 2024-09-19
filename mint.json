@@ -55,40 +55,32 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction",
-        "product",
-        "sdk-libraries"
-      ]
+      "pages": ["introduction", "product", "sdk-libraries"]
     },
     {
       "group": "API Reference",
-      "pages": [
-        "api-reference/introduction",
-        "api-reference/product"
-      ]
-    }, 
+      "pages": ["api-reference/introduction", "api-reference/product"]
+    },
     {
       "group": "Domains",
       "pages": [
         "api-reference/general/domain/api-structure",
         "api-reference/general/domain/error-code",
         "api-reference/general/domain/authentication",
+        "api-reference/endpoint/domain/Domain Reseller API",
         "api-reference/endpoint/domain/Check Domain Availability of a Domain",
         "api-reference/endpoint/domain/Register Domain",
         "api-reference/endpoint/domain/Transfer Domain",
-        "api-reference/endpoint/domain/Renew Domain",
+        "api-reference/endpoint/domain/Renew domain",
         "api-reference/endpoint/domain/Get EPP Code",
         "api-reference/endpoint/domain/Get Contact Details",
-      "api-reference/endpoint/domain/Domain Reseller API",
-      "api-reference/endpoint/domain/Transfer Sync a Domain",
+        "api-reference/endpoint/domain/Transfer Sync a Domain",
         "api-reference/endpoint/domain/Sync the Details of a Domain",
-         "api-reference/endpoint/domain/Get the Registrar Lock of a Domain",
-         "api-reference/endpoint/domain/Get the Nameservers of the Domain",
-         "api-reference/endpoint/domain/Update Contact Details of a Domain",
-         "api-reference/endpoint/domain/Update the Nameservers of a Domain",
-         "api-reference/endpoint/domain/Update the Registrar Lock of a Domain"
-
+        "api-reference/endpoint/domain/Get the Registrar Lock of a Domain",
+        "api-reference/endpoint/domain/Get the Nameservers of the Domain",
+        "api-reference/endpoint/domain/Update Contact Details of a Domain",
+        "api-reference/endpoint/domain/Update the Nameservers of a Domain",
+        "api-reference/endpoint/domain/Update the Registrar Lock of a Domain"
       ]
     },
     {
